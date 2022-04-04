@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<div class="col" style="min-width:25%;max-width:25%">
+    <div class="card-title"><h6>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h6></div>
+    <select class="form-control" onchange="window.location.href=$(this).val()">
+    {% for choice in choices %}
+        <option value="{{ choice.query_string|iriencode }}" {% if choice.selected %} selected="selected"{% endif %}>{{ choice.display }}</option>
+    {% endfor %}
+    </select>
+
+</div>
